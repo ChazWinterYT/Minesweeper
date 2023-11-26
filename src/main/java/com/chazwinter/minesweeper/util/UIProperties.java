@@ -60,6 +60,9 @@ public class UIProperties {
     public static final Color USER_MESSAGE_NEUTRAL_COLOR = Color.CADETBLUE;
     public static final Color USER_MESSAGE_GOOD_COLOR = Color.GREEN;
     public static final Color USER_MESSAGE_EVIL_COLOR = Color.RED;
-    public static final int USER_MESSAGE_GOOD_WIDTH = 150;
+    public static final int USER_MESSAGE_GOOD_WIDTH = 200;
     public static final int USER_MESSAGE_EVIL_WIDTH = 200;
+    public static final String USER_MESSAGE_DEFAULT = "Pro Tip: If you find and right-click all the mines around " +
+            "a cell, you can left+right click (or middle click) to clear all surrounding cells.";
+    public static final int USER_MESSAGE_DEFAULT_WIDTH = 200;
 }

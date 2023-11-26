@@ -46,7 +46,8 @@ public class SettingsUIBuilder {
        heightLabel.setTextFill(UIProperties.SETTINGS_TEXT_COLOR);
        minesLimitLabel = new Label(gameSettings.getValidator().getMinesLimitText());
        minesLimitLabel.setTextFill(UIProperties.SETTINGS_TEXT_COLOR);
-       userMessageLabel = new Label("Game Settings.");
+       userMessageLabel = new Label(UIProperties.USER_MESSAGE_DEFAULT);
+       userMessageLabel.setMaxWidth(UIProperties.USER_MESSAGE_DEFAULT_WIDTH);
        userMessageLabel.setWrapText(true);
        userMessageLabel.setTextFill(UIProperties.USER_MESSAGE_NEUTRAL_COLOR);
 
