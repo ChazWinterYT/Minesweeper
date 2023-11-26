@@ -12,8 +12,8 @@ import java.util.Random;
 public class SoundManager {
     private static List<MediaPlayer> loserSounds;
     private static List<MediaPlayer> winnerSounds;
-    private static final int LOSER_SOUNDS_LIST_SIZE = 8;
-    private static final int WINNER_SOUNDS_LIST_SIZE = 7;
+    private static final int LOSER_SOUNDS_LIST_SIZE = 15;
+    private static final int WINNER_SOUNDS_LIST_SIZE = 13;
     private static final String MULTI_SOUND_PATH = "/com/chazwinter/minesweeper/sound/";
     private static Random random;
 
