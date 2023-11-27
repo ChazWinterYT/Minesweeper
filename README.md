@@ -18,8 +18,7 @@ Those components are there. I don't know why it's saying they're not. I even tri
 No idea what the issue is, and I've given up trying to figure it out.
 
 ## Project status
-The app works as intended (as far as I know!). I will make edits based on any code review feedback, but I don't think any additional functionality is needed. 
+I am in the process of migrating this code to a Vaadin project using Spring Boot. Therefore, I will no longer be updating this repo while I learn the process of turning this into a web application. I should have done it that way in the first place, but I'm new to this and didn't know any better.
 
 ## Want to help?
-I need practice with collaborating on code and handling pull requests anyway, so I don't mind getting help (provided you don't do all the work for me).
-I'm not sure how that process works, so maybe you can help with that too (pull request rules/procedures, for example).
+Since I am not going to update this repo, any help would be with the migration process. I will provide a new repo link once that process is far enough along.
