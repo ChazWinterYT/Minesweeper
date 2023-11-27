@@ -94,6 +94,12 @@ public class Minesweeper {
         }
     }
 
+    /**
+     * Basically just a cheat code to view the bombs on screen while you're
+     * playing...er, I mean "debugging."
+     * @param weAreDebugging Class level parameter. Set it to true if you want to see
+     *                       the bombs as you're playing.
+     */
     private void showAllBombsForDebugging(boolean weAreDebugging) {
         if (weAreDebugging) {
             for (int row = 0; row < height; row++) {
@@ -108,7 +114,7 @@ public class Minesweeper {
     }
 
     /**
-     * Change the game state and UI after you click on a Cell Button.
+     * Change the game state after you left-click on a Cell Button.
      * @param cellButton The Button you clicked on the game board.
      */
     public void processCellLeftClick(Button cellButton) {
@@ -139,6 +145,11 @@ public class Minesweeper {
         }
     }
 
+    /**
+     * Game logic to run when the user right-clicks on a button on the game grid.
+     * This was moved into its own method because the left-click method was getting complicated.
+     * @param cellButton The button that was right-clicked.
+     */
     public void processCellRightClick(Button cellButton) {
         Cell cell = buttonCellMap.get(cellButton);
         // Right-clicking on a revealed cell, or when you used all your bombs, should do nothing.
@@ -156,12 +167,19 @@ public class Minesweeper {
         uiBuilder.updateCellAppearance(cellButton, cell, false);
     }
 
+    /**
+     * Game logic to run when the user middle clicks (or left+right clicks) a button
+     * on the game grid.
+     * Essentially just left-clicks all neighbor cells that are not flagged as bombs.
+     * @param cellButton The button that was clicked.
+     */
     public void processCellMiddleClick(Button cellButton) {
         Cell cell = buttonCellMap.get(cellButton);
         if (!cell.isRevealed()) {
             return;
         }
         int flaggedNeighbors = countFlaggedNeighbors(cell);
+        // Only reveal the neighbor cells if you have identified the surrounding bombs.
         if (cell.getNeighborMines() ==  flaggedNeighbors) {
             for (int i = 0; i < dRow.length; i++) {
                 int newRow = cell.getRow() + dRow[i];
@@ -173,6 +191,11 @@ public class Minesweeper {
         }
     }
 
+    /**
+     * Recursive method to mark an entire section of the game board as revealed if you
+     * find a cell that has no bombs as neighbors.
+     * @param cell The cell with no bombs as neighbors.
+     */
     private void floodFill(Cell cell) {
         // Base case: Don't process this cell if it was already processed.
         if (cell.isRevealed()) {
@@ -196,6 +219,12 @@ public class Minesweeper {
         }
     }
 
+    /**
+     * Helper method to count the number of cells around the given cell
+     * that have been flagged as bombs.
+     * @param cell The game cell whose neighbors we're checking.
+     * @return The number of cells that have been flagged as bombs.
+     */
     private int countFlaggedNeighbors(Cell cell) {
         int count = 0;
         for (int i = 0; i < dRow.length; i++) {

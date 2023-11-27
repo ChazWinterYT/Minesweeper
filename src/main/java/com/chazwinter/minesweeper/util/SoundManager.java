@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The SoundManager class loads the game sounds when you launch the app.
+ * When you win, a winner sound is chosen to commemorate the event.
+ * When you lose, a loser sound is chosen to commemorate the event.
+ */
 public class SoundManager {
     private static List<MediaPlayer> loserSounds;
     private static List<MediaPlayer> winnerSounds;
@@ -36,10 +41,19 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Helper method to build media file names dynamically based on their position in the list.
+     * @param i The sound's position in the list of sounds.
+     * @param loserOrWinner Flag to determine whether the sound is a winner or loser event sound.
+     * @return A String representing the path to that file.
+     */
     private static String buildFileName(int i, String loserOrWinner) {
         return MULTI_SOUND_PATH + loserOrWinner + i + ".mp3";
     }
 
+    /**
+     * Play a random losing sound when you lose the game.
+     */
     public static void playLoserSound() {
         random = new Random();
         int index = random.nextInt(loserSounds.size());
@@ -48,6 +62,9 @@ public class SoundManager {
         player.play();
     }
 
+    /**
+     * Play a random winning sound when you win the game.
+     */
     public static void playWinnerSound(){
         random = new Random();
         int index = random.nextInt(winnerSounds.size());

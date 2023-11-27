@@ -123,7 +123,7 @@ public class MinesweeperUIBuilder {
      */
     public void resetGame() {
         resetTimer();
-        gameOver = false;
+        gameOver = false;   // If you reset the game, then it's not over anymore.
         int height = gameSettings.getHeight();
         int width = gameSettings.getWidth();
         int numMines = gameSettings.getNumMines();
@@ -133,6 +133,7 @@ public class MinesweeperUIBuilder {
         timerLabel.setText("000");
         buttonGrid.getChildren().clear();
 
+        // Build the grid of buttons
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
                 Button cellButton = createCellButton();
@@ -149,6 +150,10 @@ public class MinesweeperUIBuilder {
         System.out.println("A new game has been started.");
     }
 
+    /**
+     * Helper method to create individual cell buttons and tell them what to do when you click on them.
+     * @return The newly created Button.
+     */
     private Button createCellButton() {
         Button cellButton = new Button();
         cellButton.setMinSize(UIProperties.CELL_SIZE, UIProperties.CELL_SIZE);
@@ -163,6 +168,12 @@ public class MinesweeperUIBuilder {
         return cellButton;
     }
 
+    /**
+     * Update the appearance of the cell after the user interacts with it.
+     * @param cellButton The button that was clicked.
+     * @param cell The game cell that corresponds to that button.
+     * @param isLeftClick Flag to determine whether the click was a left click or not.
+     */
     public void updateCellAppearance(Button cellButton, Cell cell, boolean isLeftClick) {
         // The timer starts when the player first interacts with the game board.
         if (!timerStarted) {
@@ -178,6 +189,16 @@ public class MinesweeperUIBuilder {
         cellButton.setGraphic(stackPane);
     }
 
+    /**
+     * Build the StackPane that results from a left click interaction (or no interaction,
+     * but you just started a new game).
+     * A StackPane consists of some (optional) text, an (optional) image, and the button,
+     * stacked on top of each other.
+     * @param cellButton The cell button that was clicked (or initialized). NOTE: This is
+     *                   not needed, but I'm leaving it in case it's needed in the future.
+     * @param cell The corresponding game cell for that button.
+     * @return The newly built StackPane for your viewing pleasure.
+     */
     private StackPane buildStackPaneFromLeftClickOrDefault(Button cellButton, Cell cell) {
         StackPane stackPane = new StackPane();
         stackPane.setStyle(UIProperties.CELL_BORDER_STYLE);
@@ -193,7 +214,7 @@ public class MinesweeperUIBuilder {
         }
         if (cell.isBomb() && cell.isRevealed()) { // Endgame only - show which cell you screwed up on.
             imageView = new CellImageView(UIProperties.CLICKED_BOMB_IMG);
-        } else if (cell.isBomb() && !cell.isRevealed()) { // Endgame only - show where the bombs were.
+        } else if (cell.isBomb() && !cell.isRevealed()) { // Endgame only - show where the rest of the bombs were.
             imageView = new CellImageView(UIProperties.REVEALED_BOMB_IMG);
         } else {    // Cell is not a Bomb.
             imageView = new CellImageView(UIProperties.NO_CELL_IMG);
@@ -207,6 +228,15 @@ public class MinesweeperUIBuilder {
         return stackPane;
     }
 
+    /**
+     * Build the StackPane that results from a right-click interaction.
+     * The left-click method was getting large and complicated, so I pulled the right-click
+     * logic into its own method.
+     * @param cellButton The cell button that was clicked (or initialized). NOTE: This is
+     *                   not needed, but I'm leaving it in case it's needed in the future.
+     * @param cell The corresponding game cell for that button.
+     * @return The newly built StackPane for your viewing pleasure.
+     */
     private StackPane buildStackPaneFromRightClick(Button cellButton, Cell cell) {
         StackPane stackPane = new StackPane();
         stackPane.setStyle(UIProperties.CELL_BORDER_STYLE);
@@ -220,6 +250,12 @@ public class MinesweeperUIBuilder {
         return stackPane;
     }
 
+    /**
+     * Make the timer start counting up so the user can see how many seconds have elapsed
+     * since game start.
+     * Timer should freeze at 999, or when the game is over.
+     * This code could potentially be moved into the model.Minesweeper class.
+     */
     private void startTimer() {
         timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -238,6 +274,9 @@ public class MinesweeperUIBuilder {
         timer.scheduleAtFixedRate(task, 1000, 1000);
     }
 
+    /**
+     * Stop the timer, and reset it to 0.
+     */
     public void resetTimer() {
         if (timer != null) {
             timer.cancel();
@@ -247,7 +286,11 @@ public class MinesweeperUIBuilder {
         seconds = 0;
     }
 
-    public void updateTimerDisplay(int seconds) {
+    /**
+     * Convert the elapsed time into text so the user can view it on screen.
+     * @param seconds The number of seconds elapsed so far in this game.
+     */
+    private void updateTimerDisplay(int seconds) {
         timerLabel.setText(String.format("%03d", seconds));
     }
 }

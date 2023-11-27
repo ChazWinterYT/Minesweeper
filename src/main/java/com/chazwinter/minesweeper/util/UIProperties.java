@@ -7,6 +7,10 @@ import javafx.scene.text.Font;
 
 import java.util.Map;
 
+/**
+ * This class contains various UI constants that are used in the rest of the app.
+ * To change UI parameters, you should change them in this class.
+ */
 public class UIProperties {
     // General UI properties that apply to multiple places
     public static final String BACKGROUND_COLOR = "-fx-background-color: #111111; ";

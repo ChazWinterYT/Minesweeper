@@ -1,2 +1,6 @@
 module:com.chazwinter.minesweeper
 com.chazwinter.minesweeper
+com.chazwinter.minesweeper.model
+com.chazwinter.minesweeper.settings
+com.chazwinter.minesweeper.ui
+com.chazwinter.minesweeper.util

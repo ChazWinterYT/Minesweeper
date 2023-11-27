@@ -72,6 +72,7 @@ public class SettingsUIBuilder {
                    gameSettings.getSettingsStage().sizeToScene();
                    System.out.println(gameSettings.getUserErrorMessageText(newHeight, newWidth));
                }
+           // Don't allow users to type non-numbers into the settings menu.
            } catch (NumberFormatException e) {
                userMessageLabel.setText("Bruh... actual numbers, please.");
                userMessageLabel.setMaxWidth(UIProperties.USER_MESSAGE_EVIL_WIDTH);
