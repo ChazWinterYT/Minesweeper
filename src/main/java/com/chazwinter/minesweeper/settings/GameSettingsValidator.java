@@ -11,7 +11,7 @@ public class GameSettingsValidator {
     private final int minGridSize = 5;
     private final int maxGridSize = 30;
     private final int minMinesPercentage = 5;
-    private final int maxMinesPercentage = 25;
+    private final int maxMinesPercentage = 35;
     private final String minMaxGridText = String.format("(min: %d  max %d)", minGridSize, maxGridSize);
     private final Function<Integer, Integer> minMaxMinesLimit = x -> height * width * x / 100;
     private final Predicate<Integer> minMaxMinesLimitTest = x ->

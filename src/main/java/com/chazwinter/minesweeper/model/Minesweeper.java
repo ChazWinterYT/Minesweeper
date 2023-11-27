@@ -59,15 +59,11 @@ public class Minesweeper {
      */
     public void randomizeAndPlaceBombs() {
         int totalCells = width * height;
-        /* Obtain a Set of random numbers == the number of expected mines
-            It is done in such a way that the four corners can never
-            contain a bomb. This is intentional. */
+        /* Obtain a Set of random numbers == the number of expected mines */
         Set<Integer> randomNums = new HashSet<>();
         while (randomNums.size() < numBombs) {
             int randomNum = (int) (Math.random() * totalCells);
-            if (!isACornerCell(randomNum)) {
-                randomNums.add(randomNum);
-            }
+            randomNums.add(randomNum);
         }
         for (int num : randomNums) {
             int row = num / width;
@@ -75,14 +71,6 @@ public class Minesweeper {
             Cell cellToPlaceBomb = cellGrid[row][col];
             cellToPlaceBomb.setIsBomb(true);
         }
-    }
-
-    private boolean isACornerCell(int cellNumber) {
-        int row = cellNumber / width;
-        int col = cellNumber % width;
-        boolean rowIsOnEdge = row == 0 || row == height - 1;
-        boolean colIsOnEdge = col == 0 || col == width - 1;
-        return rowIsOnEdge && colIsOnEdge;
     }
 
     /**
