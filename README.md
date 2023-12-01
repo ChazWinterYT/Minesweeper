@@ -9,7 +9,11 @@ As of the start of this project, I am a student in Amazon Technical Academy. I w
 One way to do that is to just make programs. So here we are. A Minesweeper (Chazsweeper!) clone.
 
 ## How to play
-For now, the only way to play it is to clone the repo and run start() (or main) in com.chazwinter.minesweeper.MinesweeperApplication. <br>
+You can play in a web browser without sound at this link: https://replit.com/@chaz4/Minesweeper-1
+
+It takes a while to load the first time. Please be patient.
+
+For now, the only way to play it with sound, is to clone the repo and run start() (or main) in com.chazwinter.minesweeper.MinesweeperApplication. <br>
 ./gradlew run in the terminal works too.<br>
 I tried for HOURS to make an exe and dmg file. But every time I fixed one issue, a new one popped up. I finally got fed up and stopped trying.<br>
 Maybe someone smarter than me can tell me what I'm doing wrong, or clone the repo and make the executables for me.<br>
